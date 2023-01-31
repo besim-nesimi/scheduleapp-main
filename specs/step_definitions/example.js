@@ -10,25 +10,30 @@ cy.url().should('equal', 'http://localhost:7655/')
 
 Given('I am on the login page', () => {
     cy.visit('/login.html')
+    cy.get('#email').should('be.visible')
+    cy.get('#password').should('be.visible')
+    cy.get('.login-page').should('be.visible')
     cy.get('#login').should('be.visible')
     cy.wait(200)
 })
 
-When('I enter valid info', () => {
+When('Valid credentials are given', () => {
     cy.get('#email').type('exempel@school.net');
     cy.get('#password').type('abc123');
     cy.get('[type="submit"]').click()
     cy.url().should('equal', 'http://localhost:7655/')
+
 });
 
-When('I enter invalid info', () => {
+When('Invalid credentials are given', () => {
     cy.get('#email').type('exempel@skola.net');
     cy.get('#password').type('123abc');
     cy.get('[type="submit"]').click()
 });
 
-Then('I should see Nodehill Logo in schedule page', () => {
+Then('I should see Nodehill Logo and some other stuff in schedule page', () => {
     cy.get('img').should('be.visible')
+    cy.get('footer').should('be.visible')
 });
 
 Then('Login is successful', () => {
@@ -45,12 +50,11 @@ Given('I should be logged in and see logo in schedule page', () => {
 });
 
 When('I click on the admin button', () => {
-    // cy.get('[onclick="location.href='/admin'"]').click();
-    //cy.get('button').contains('Admin').click()
     cy.get('[onclick="location.href=\'/admin\'"]').click();
-    // cy.visit('/admin/')
 });
 
 Then('I visit the admin page', () => {
   cy.url().should('include', 'http://localhost:7655/admin');
+  cy.get('.MuiCardHeader-root').should('be.visible')
+  cy.get('[href="#/classes"]').should('be.visible')
 });

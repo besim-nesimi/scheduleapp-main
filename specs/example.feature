@@ -1,20 +1,20 @@
-Feature: Admin/user login and navigation
-  As a admin, I want to be able to log in to the web app and navigate to the admin web app.
+Feature: Testing login credentials and navigation to admin page.
+  Testing the credentials for logging in and to navigate to the admin page within the schedule web app.
 
-Scenario: Successful login
+Scenario: Login is successful
 Given I am on the login page
-When I enter valid info
-Then I should see Nodehill Logo in schedule page
+When Valid credentials are given
+Then I should see Nodehill Logo and some other stuff in schedule page
 Then Login is successful
 
-Scenario: Failed login
+Scenario: Login is not successful
 Given I am on the login page
-When I enter invalid info
+When Invalid credentials are given
 Then Login is unsuccessful
 
 Scenario: Successful login and navigation
 Given I am on the login page
-When I enter valid info
-Then I should be logged in and see logo in schedule page
+When Valid credentials are given
+Then I should see Nodehill Logo and some other stuff in schedule page
 When I click on the admin button
 Then I visit the admin page
