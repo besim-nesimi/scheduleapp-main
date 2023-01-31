@@ -10,7 +10,8 @@ cy.url().should('equal', 'http://localhost:7655/')
 
 Given('I am on the login page', () => {
     cy.visit('/login.html')
-    cy.wait(2000) 
+    cy.get('#login').should('be.visible')
+    cy.wait(200)
 })
 
 When('I enter valid info', () => {

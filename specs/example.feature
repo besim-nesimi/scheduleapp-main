@@ -1,5 +1,5 @@
-Feature: Admin login, navigation and creation
-  As a admin, I want to be able to log in to the web app and navigate to the schedule web app.
+Feature: Admin/user login and navigation
+  As a admin, I want to be able to log in to the web app and navigate to the admin web app.
 
 Scenario: Successful login
 Given I am on the login page
