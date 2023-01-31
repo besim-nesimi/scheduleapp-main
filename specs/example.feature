@@ -3,10 +3,18 @@ Feature: Admin login, navigation and creation
 
 Scenario: Successful login
 Given I am on the login page
-When I see Nodehill Logo
+When I enter valid info
+Then I should see Nodehill Logo in schedule page
 Then Login is successful
 
-Scenario: Successful navigation
-Given I am on the schedule page
+Scenario: Failed login
+Given I am on the login page
+When I enter invalid info
+Then Login is unsuccessful
+
+Scenario: Successful login and navigation
+Given I am on the login page
+When I enter valid info
+Then I should be logged in and see logo in schedule page
 When I click on the admin button
 Then I visit the admin page
